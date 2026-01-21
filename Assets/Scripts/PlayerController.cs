@@ -11,9 +11,9 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        Vector2 move = MoveAction.ReadValue<Vector2>();
+        Vector2 move = MoveAction.ReadValue<Vector2>(); // Get the current value of the Move action
         Debug.Log(move);
-        Vector2 position = (Vector2)transform.position + move *0.1f;
+        Vector2 position = (Vector2)transform.position + move *3.0f * Time.deltaTime; //Time.deltaTime makes the character move the same units for all fps
         transform.position = position;
 
     }
