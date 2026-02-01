@@ -7,8 +7,9 @@ public class PlayerController : MonoBehaviour
     public InputAction MoveAction;
     private void Start()
     {
-        rigidbody2d = GetComponent<Rigidbody2D>();
         MoveAction.Enable();
+        rigidbody2d = GetComponent<Rigidbody2D>();
+        
        
     }
     private void Update()
