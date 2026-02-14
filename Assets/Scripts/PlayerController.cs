@@ -2,10 +2,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
+    public float invincibleTime = 2.0f;
+    bool isInvincible;
+    float damageCooldown;
     public int health {get{return currentHealth;}}
     public int maxHealth = 100;
     public float speed = 3.0f;
-    int currentHealth;
+    public int currentHealth;
     Rigidbody2D rigidbody2d;
     Vector2 move;
     public InputAction MoveAction;
@@ -20,7 +23,13 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         move = MoveAction.ReadValue<Vector2>(); // Get the current value of the Move action
-       
+        if(isInvincible){
+            damageCooldown -= Time.deltaTime;
+            if(damageCooldown <= 0)
+            {
+                isInvincible = false;
+            }
+        }
     }
     void FixedUpdate()
     {
@@ -30,7 +39,17 @@ public class PlayerController : MonoBehaviour
 
     public void ChangeHealth(int amount)
     {
-        currentHealth = Mathf.Clamp(currentHealth + amount,0,maxHealth);
+        if(amount < 0)
+        {
+            if (isInvincible)
+            {
+                return;
+            } 
+            isInvincible = true;
+            damageCooldown = invincibleTime;
+            currentHealth = Mathf.Clamp(currentHealth + amount,0,maxHealth);
+        }
+       
         
     }
 }

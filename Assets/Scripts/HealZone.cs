@@ -9,9 +9,10 @@ public class HealthCrystal : MonoBehaviour
         PlayerController player = other.GetComponent<PlayerController>(); //contains the reference to the Player Controller (Script) component on GameObject that collides with the collectible.
         if(player != null && player.health != player.maxHealth)
         {
-            
             player.ChangeHealth(healing_amount); // Increase player's health by 20
             Destroy(gameObject); // Destroy the collectible
         }
+
+    
     }
 }
