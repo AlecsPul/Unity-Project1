@@ -1,0 +1,5 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; align-self: stretch;">
+        <ui:VisualElement name="HealthBarBackground" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/UnityTechnologies/Final/Art/barra%20de%20vida%20(blood)%20576x320.png?fileID=-7477935240406217491&amp;guid=88c241229e006164185526c0c56035d8&amp;type=3#barra de vida (blood) 576x320_0&quot;); flex-shrink: 1; width: 433px; height: 136px; -unity-background-scale-mode: scale-to-fit; -unity-background-image-tint-color: rgb(255, 255, 255); background-color: rgba(0, 0, 0, 0); background-size: 100% 100%;"/>
+    </ui:VisualElement>
+</ui:UXML>

@@ -49,7 +49,10 @@ public class PlayerController : MonoBehaviour
             damageCooldown = invincibleTime;
             currentHealth = Mathf.Clamp(currentHealth + amount,0,maxHealth);
         }
-       
+        else
+        {
+            currentHealth = Mathf.Clamp(currentHealth + amount,0,maxHealth);
+        }
         
     }
 }
