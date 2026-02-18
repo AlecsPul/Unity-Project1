@@ -26,5 +26,3 @@ This project is currently in active development. More features and improvements 
 - Level Design & World Building
 
 ---
-
-Stay tuned for updates!
