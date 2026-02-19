@@ -44,7 +44,8 @@ public class PlayerController : MonoBehaviour
             if (isInvincible)
             {
                 return;
-            } 
+            }
+        
             isInvincible = true;
             damageCooldown = invincibleTime;
             currentHealth = Mathf.Clamp(currentHealth + amount,0,maxHealth);
@@ -53,6 +54,8 @@ public class PlayerController : MonoBehaviour
         {
             currentHealth = Mathf.Clamp(currentHealth + amount,0,maxHealth);
         }
+
+        UIHandler.instance.SetHealthValue(currentHealth/(float)maxHealth);
         
     }
 }
