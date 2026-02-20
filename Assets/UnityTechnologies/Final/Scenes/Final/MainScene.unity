@@ -20204,7 +20204,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74e265c06312ee444b8c25268770e6e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIHandler
-  CurrentHealth: 0.5
 --- !u!1 &786729212
 GameObject:
   m_ObjectHideFlags: 0
@@ -21555,7 +21554,7 @@ PrefabInstance:
     - target: {fileID: 3232965678762222017, guid: 72e7b26412b9b6848a2fed333a0d7361,
         type: 3}
       propertyPath: currentHealth
-      value: 10
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3232965678762222017, guid: 72e7b26412b9b6848a2fed333a0d7361,
         type: 3}
