@@ -40,6 +40,8 @@ public class EnemyController : MonoBehaviour
             else if(patrolPhase == 3){
                 patrolPhase = 2;
             }
+
+            //patrolPhase = (patrolPhase + 1) % 4; // This line is for a square patrol
             
             timer = changeTime;
         }
