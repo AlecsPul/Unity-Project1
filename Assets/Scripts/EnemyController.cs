@@ -3,9 +3,12 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public float speed;
+    public float damage;
     public float changeTime;
+    public float patrolType; // 0 for L shape, 1 for square
+    public float patrolDistance; // Distance to move in each direction before changing direction
     private float timer;
-    private int patrolPhase = 0; // 0: right, 1: up, 2: left, 3: down
+    private int patrolPhase = 0; // 0: right L, 1: up L, 2: left L, 3: down L
     Rigidbody2D rigidbody2D;
 
     void OnTriggerEnter2D(Collider2D other)
@@ -13,7 +16,7 @@ public class EnemyController : MonoBehaviour
         PlayerController player = other.gameObject.GetComponent<PlayerController>();
         if(player != null)
         {
-            player.ChangeHealth(-20);
+            player.ChangeHealth(-damage);
         }
     }
     void Start()
@@ -27,22 +30,25 @@ public class EnemyController : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer < 0)
         {
-            // Patrol following an L shape
-            if(patrolPhase == 0){
-                patrolPhase = 1;
+            if(patrolType == 0){
+                // Patrol following an L shape
+                if(patrolPhase == 0){
+                    patrolPhase = 1;
+                }
+                else if(patrolPhase == 1){
+                    patrolPhase = 3;
+                }
+                else if(patrolPhase == 2){
+                    patrolPhase = 0;
+                }
+                else if(patrolPhase == 3){
+                    patrolPhase = 2;
+                }  
             }
-            else if(patrolPhase == 1){
-                patrolPhase = 3;
+            else if(patrolType == 1) //Patrol following a square shape
+            {
+                patrolPhase = (patrolPhase + 1) % 4;
             }
-            else if(patrolPhase == 2){
-                patrolPhase = 0;
-            }
-            else if(patrolPhase == 3){
-                patrolPhase = 2;
-            }
-
-            //patrolPhase = (patrolPhase + 1) % 4; // This line is for a square patrol
-            
             timer = changeTime;
         }
     }
@@ -52,16 +58,16 @@ public class EnemyController : MonoBehaviour
         switch (patrolPhase)
         {
             case 0: // Move right (x+)
-                position.x += speed * Time.deltaTime;
+                position.x += speed * Time.deltaTime + patrolDistance;
                 break;
             case 1: // Move up (y+)
-                position.y += speed * Time.deltaTime;
+                position.y += speed * Time.deltaTime + patrolDistance;
                 break;
             case 2: // Move left (x-)
-                position.x -= speed * Time.deltaTime;
+                position.x -= speed * Time.deltaTime + patrolDistance;
                 break;
             case 3: // Move down (y-)
-                position.y -= speed * Time.deltaTime;
+                position.y -= speed * Time.deltaTime + patrolDistance;
                 break;
         }
         rigidbody2D.MovePosition(position);
