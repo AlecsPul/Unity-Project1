@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public float speed;
-    public float damage;
+    public int damage;
     public float changeTime;
     public float patrolType; // 0 for L shape, 1 for square
     public float patrolDistance; // Distance to move in each direction before changing direction

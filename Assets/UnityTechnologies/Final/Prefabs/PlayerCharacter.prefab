@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52acbc141705cc446b86df9d4df737c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  invincibleTime: 2
   maxHealth: 100
   speed: 3
   currentHealth: 0
